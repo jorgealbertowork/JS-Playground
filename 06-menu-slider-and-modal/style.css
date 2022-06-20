@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 :root {
-  --modal-duration: 1s;
+  --modal-duration: 0.5s;
   --primary-color: #30336b;
   --secondary-color: #be2edd;
 }
@@ -13,6 +13,12 @@
 body {
   font-family: 'Lato', sans-serif;
   margin: 0;
+  transition: transform 0.3s ease;
+}
+
+body.show-nav {
+  transform: translate(200px);
+  overflow-x: hidden;
 }
 
 nav {
@@ -125,6 +131,10 @@ button:focus {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+.modal-container.show-modal {
+  display: block;
+}
+
 .modal {
   width: 400px;
   max-width: 100%;
@@ -138,6 +148,9 @@ button:focus {
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  animation-name: modalOpen;
+  animation-duration: var(--modal-duration);
 }
 
 .modal-header {
@@ -148,7 +161,6 @@ button:focus {
 
 .modal-header h3 {
   margin: 0;
-  border-bottom: 1px solid #333;
 }
 
 .modal-content {
@@ -178,3 +190,12 @@ button:focus {
   font-size: 25px;
 }
 
+@keyframes modalOpen {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
